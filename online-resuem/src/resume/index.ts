@@ -27,22 +27,7 @@ export default {
       },
     ],
   },
-  work: [
-    {
-      company: "上海艺术伙伴有限公司",
-      position: "Web 前端工程师",
-      website: "",
-      startDate: "2015.05",
-      endDate: "2015.10",
-      summary: "上海艺术伙伴有限公司",
-      highlights: [
-        "Photoshop 对设计图进行切片",
-        "HTML5 + CSS3 编写网站页面，并保证浏览器的兼容性",
-        "负责配合后台开发人员，完成页面的交互及接口对接",
-        "负责电脑端及移动端 Web 项目的前端开发",
-      ],
-    },
-  ],
+
   project: [
     {
       organization: "上海中科院后台管理",
@@ -72,35 +57,6 @@ export default {
         "项目上线后，已多次试点于中小型重要会议中，参会人员能随时轻松查看活动信息、下载资料，更为便捷。",
       ],
     },
-
-    {
-      organization: "比赛成绩查询开发",
-      position: "Web 前端工程师",
-      website: "",
-      startDate: "2015.12",
-      endDate: "2016.02",
-      summary: "AngularJS + Gulp + Sass",
-      highlights: [
-        "前端基础框架搭建及简单界面设计，基于 AngularJS + Gulp + Sass 开发",
-        "比赛成绩查询功能模块的实现（赛事列表、赛事科目、团队成绩、个人成绩等）",
-        "根据特殊的比赛定制不同的查询页面",
-      ],
-    },
-    {
-      organization: "跑团助手2.0开发",
-      position: "Web 前端工程师",
-      website: "",
-      startDate: "2015.12",
-      endDate: "2016.02",
-      summary: "AngularJS + Gulp + Sass",
-      highlights: [
-        "项目基于 AngularJS + Gulp + Sass 开发",
-        "跑团助手2.0开发，服务于跑友参加各种约跑活动提供便利",
-        "微信端授权确认身份后才登录",
-        "跑团团长可以发布活动、编辑活动、取消活动",
-        "跑友报名活动、交报名费、签到活动、分享活动",
-      ],
-    },
   ],
   education: [
     {
@@ -120,88 +76,27 @@ export default {
   ],
   awards: [
     {
-      title: "全国计算机二级证书",
-      date: "2013-11-01",
-      awarder: "教育部考试中心",
-      summary: "",
+      title: "一等奖学金",
+      date: "2020-9",
+    },
+    {
+      title: "CET-4",
+      date: "2021-6",
     },
   ],
-  publications: [
-    {
-      name: "angular-weui",
-      publisher: "skyvow",
-      releaseDate: "2016-10",
-      website: "https://github.com/skyvow/angular-weui",
-      summary: "Angular WeUI - 基于WeUI封装一些常用指令及服务",
-    },
-    {
-      name: "wux",
-      publisher: "skyvow",
-      releaseDate: "2016-10",
-      website: "https://github.com/skyvow/wux",
-      summary: "wux - 微信小程序自定义组件（对话框、指示器、五星评分...）",
-    },
-    {
-      name: "m-mall",
-      publisher: "skyvow",
-      releaseDate: "2016-12",
-      website: "https://github.com/skyvow/m-mall",
-      summary: "微信小程序-小商城前台（简单的商城 DEMO，支付未完善）",
-    },
-    {
-      name: "m-mall-admin",
-      publisher: "skyvow",
-      releaseDate: "2016-12",
-      website: "https://github.com/skyvow/m-mall-admin",
-      summary: "微信小程序-小商城后台（基于 NodeJS 实现 restful API）",
-    },
-    {
-      name: "skyvow.github.io",
-      publisher: "skyvow",
-      releaseDate: "2017-4",
-      website: "https://github.com/skyvow/skyvow.github.io",
-      summary: "My resume - 基于 React + React-router + ES6 前端项目",
-    },
-  ],
+
   skills: [
     {
-      name: "前端",
-      level: "master",
-      keywords: [
-        "HTML",
-        "CSS",
-        "Javascript",
-        "Sass",
-        "PostCSS",
-        "Gulp",
-        "Webpack",
-        "Angular",
-        "React",
-      ],
+      name: "HTML/CSS",
+      keywords: "能够语义化使用HTML标签，模块化使用CSS，了解TailWindCSS。",
     },
     {
-      name: "后端",
-      level: "master",
+      name: "JavaScript",
       keywords: ["NodeJS", "Python"],
     },
-  ],
-  languages: [
     {
-      language: "中文",
-      fluency: "母语",
-    },
-  ],
-  interests: [
-    {
-      name: "社交",
-      keywords: ["知乎", "微博", "微信", "QQ"],
-    },
-  ],
-  references: [
-    {
-      name: "奥勃鲁切夫",
-      reference:
-        "人能为自己心爱的工作贡献出全部力量、全部精力、全部知识，那么这项工作将完成得出色，收效也更大。",
+      name: "VUE",
+      keywords: ["NodeJS", "Python"],
     },
   ],
 };

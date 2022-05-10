@@ -1,9 +1,20 @@
 <template>
   <div class="border h-full bg-white ml-2 mr-4">
+    <!-- 资料背景 -->
     <div class="mx-8 mt-6 mb-12">
       <div class="text-xl">背景资料</div>
       <el-divider />
+
+      <ul class="px-2 mx-6">
+        <div v-for="info in summary" class="flex mb-2">
+          <icon-play-filled-alt class="h-3 mt-1.5 mr-1" />
+          <li class="">
+            {{ info }}
+          </li>
+        </div>
+      </ul>
     </div>
+    <!-- 教育经历 -->
     <div class="mx-8 mt-6 font-sans mb-12" v-if="education">
       <div class="text-lg">教育经历</div>
       <el-divider />
@@ -22,7 +33,7 @@
         </div>
       </template>
     </div>
-
+    <!-- 项目经历 -->
     <div class="mx-8 mt-6 font-sans mb-12" v-if="project">
       <div class="text-lg">项目经历</div>
       <el-divider />
@@ -42,11 +53,38 @@
           </div>
 
           <ul class="px-2 mx-10">
-            <li v-for="info in item.highlights">
-              {{ info }} <icon-email></icon-email>
-              <!-- <icon-circlesoild /> -->
-            </li>
+            <div v-for="info in item.highlights" class="flex">
+              <icon-radio-button class="h-3 mt-1.5 mr-1" />
+              <li class="">
+                {{ info }}
+              </li>
+            </div>
           </ul>
+        </div>
+      </template>
+    </div>
+    <!-- 技能及其他 -->
+    <div class="mx-8 mt-6 font-sans mb-12" v-if="skills">
+      <div class="text-lg">技能及其他</div>
+      <el-divider />
+
+      <el-table :data="skills" border style="width: 100%" class="bg-slate-500">
+        <el-table-column prop="name" label="技能" width="180" />
+        <el-table-column prop="keywords" label="掌握程度" />
+      </el-table>
+    </div>
+    <!-- 荣誉证书 -->
+    <div class="mx-8 mt-6 font-sans mb-12" v-if="awards">
+      <div class="text-lg">荣誉证书</div>
+      <el-divider />
+      <template v-for="item in awards">
+        <div class="mb-4 flex">
+          <div class="ml-4">
+            {{ item.title }}
+          </div>
+          <div class="px-2 w-28 text-gray-400 text-center">
+            {{ item.date }}
+          </div>
         </div>
       </template>
     </div>
@@ -56,9 +94,13 @@
 <script setup lang="ts">
 import resumeInfo from "../../resume/index";
 // import IconCirclesoild from "~icons/carbon/circle-soild";
-import IconEmail from "~icons/carbon/email";
+import IconPlayFilledAlt from "~icons/carbon/play-filled-alt";
+import IconRadioButton from "~icons/carbon/radio-button";
 const education = resumeInfo.education;
 const project = resumeInfo.project;
+const skills = resumeInfo.skills;
+const awards = resumeInfo.awards;
+const summary = resumeInfo.basics.summary;
 </script>
 
 <style scoped></style>

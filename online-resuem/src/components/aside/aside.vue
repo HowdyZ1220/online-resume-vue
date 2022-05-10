@@ -1,5 +1,5 @@
 <template>
-  <div class="border ml-4 bg-white">
+  <div class="border ml-4 bg-white ">
     <div class="flex justify-center flex-col items-center pt-8 font-bold mx-4">
       <el-avatar
         class="mb-8"

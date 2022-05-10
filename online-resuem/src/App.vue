@@ -38,7 +38,6 @@ import Container from "./container/container.vue";
 
 <style>
 .el-container {
-  margin-bottom: 40px;
   height: 100%;
 }
 </style>
