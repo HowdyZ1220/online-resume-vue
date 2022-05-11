@@ -1,7 +1,7 @@
 <template>
   <div class="common-layout">
     <el-container>
-      <el-header class="header mb-2">
+      <el-header class="header mb-2 h-96">
         <Header></Header>
       </el-header>
       <el-container>
@@ -23,10 +23,10 @@ import Main from "../components/Main/Main.vue";
 </script>
 
 <style scoped>
-.common-layout /deep/ .main {
+.common-layout :deep() .main {
   padding: 0;
 }
-.common-layout /deep/ .header {
+.common-layout :deep() .header {
   padding: 0;
 }
 </style>

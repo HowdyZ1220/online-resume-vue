@@ -12,7 +12,8 @@
     "element-plus": "^2.1.10",
     "feather-icons": "^4.29.0",
     "jspdf": "^2.5.1",
-    "vue": "^3.2.25"
+    "vue": "^3.2.25",
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@iconify-json/carbon": "^1.1.3",

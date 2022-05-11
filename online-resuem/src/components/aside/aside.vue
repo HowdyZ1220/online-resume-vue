@@ -1,5 +1,5 @@
 <template>
-  <div class="border ml-4 bg-white ">
+  <div class="border ml-4 bg-white">
     <div class="flex justify-center flex-col items-center pt-8 font-bold mx-4">
       <el-avatar
         class="mb-8"
@@ -39,27 +39,26 @@
 </template>
 
 <script setup lang="ts">
-import resume from "../../resume";
+import { computed, ref } from "vue";
+import { useStore } from "vuex";
+
 import Github from "../../svg/github.vue";
 import IconLogoWeChat from "~icons/carbon/logo-wechat";
 import IconEducation from "~icons/carbon/education";
 import IconEmail from "~icons/carbon/email";
-import IconMobile from "~icons/carbon/mobile";
+import IconMobile from "~icons/carbon/phone";
 
-//获取数据
-const { basics } = resume;
-const name = basics.name;
-const position = basics.position;
-const picture = basics.picture;
-const email = basics.email;
-const educ = basics.educ;
-const weChat = basics.weChat;
-const phone = basics.phone;
-const github = basics.website;
-
-const clickGithub = () => {
-  console.log("跳转");
-};
+const store = useStore();
+const { basics } = store.state;
+//响应式的取出state中的数据
+const name = computed(() => basics.name);
+const position = computed(() => basics.position);
+const picture = computed(() => basics.picture);
+const email = computed(() => basics.email);
+const educ = computed(() => basics.educ);
+const weChat = computed(() => basics.weChat);
+const phone = computed(() => basics.phone);
+const github = computed(() => basics.github);
 </script>
 
 <style scoped></style>

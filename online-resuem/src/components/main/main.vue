@@ -2,7 +2,9 @@
   <div class="border h-full bg-white ml-2 mr-4">
     <!-- 资料背景 -->
     <div class="mx-8 mt-6 mb-12">
-      <div class="text-xl">背景资料</div>
+      <div class="text-xl flex">
+        <icon-account class="mr-2 mt-0.5" />背景资料
+      </div>
       <el-divider />
 
       <ul class="px-2 mx-6">
@@ -16,7 +18,9 @@
     </div>
     <!-- 教育经历 -->
     <div class="mx-8 mt-6 font-sans mb-12" v-if="education">
-      <div class="text-lg">教育经历</div>
+      <div class="text-xl flex">
+        <icon-education class="mr-2 mt-0.5" /> 教育经历
+      </div>
       <el-divider />
       <template v-for="item in education">
         <div class="mb-4 flex text-lg">
@@ -35,7 +39,9 @@
     </div>
     <!-- 项目经历 -->
     <div class="mx-8 mt-6 font-sans mb-12" v-if="project">
-      <div class="text-lg">项目经历</div>
+      <div class="text-xl flex">
+        <icon-data-check class="mr-2 mt-0.5" />项目经历
+      </div>
       <el-divider />
       <template v-for="item in project">
         <div class="mb-4">
@@ -63,9 +69,11 @@
         </div>
       </template>
     </div>
-    <!-- 技能及其他 -->
+    <!-- 技能清单 -->
     <div class="mx-8 mt-6 font-sans mb-12" v-if="skills">
-      <div class="text-lg">技能及其他</div>
+      <div class="text-xl flex">
+        <icon-tool-kit class="mr-2 mt-0.5" /> 技能清单
+      </div>
       <el-divider />
 
       <el-table :data="skills" border style="width: 100%" class="bg-slate-500">
@@ -75,7 +83,9 @@
     </div>
     <!-- 荣誉证书 -->
     <div class="mx-8 mt-6 font-sans mb-12" v-if="awards">
-      <div class="text-lg">荣誉证书</div>
+      <div class="text-xl flex">
+        <icon-certificate class="mr-2 mt-0.5" /> 荣誉证书
+      </div>
       <el-divider />
       <template v-for="item in awards">
         <div class="mb-4 flex">
@@ -92,15 +102,18 @@
 </template>
 
 <script setup lang="ts">
+import { useStore } from "vuex";
 import resumeInfo from "../../resume/index";
-// import IconCirclesoild from "~icons/carbon/circle-soild";
+import IconAccount from "~icons/carbon/account";
 import IconPlayFilledAlt from "~icons/carbon/play-filled-alt";
 import IconRadioButton from "~icons/carbon/radio-button";
-const education = resumeInfo.education;
-const project = resumeInfo.project;
-const skills = resumeInfo.skills;
-const awards = resumeInfo.awards;
-const summary = resumeInfo.basics.summary;
+import IconEducation from "~icons/carbon/education";
+import IconCertificate from "~icons/carbon/certificate";
+import IconToolKit from "~icons/carbon/tool-kit";
+import IconDataCheck from "~icons/carbon/data-check";
+
+const store = useStore();
+const { education, project, skills, awards, summary } = store.state;
 </script>
 
 <style scoped></style>
