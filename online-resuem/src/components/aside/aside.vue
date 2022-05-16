@@ -31,7 +31,7 @@
       <el-divider />
     </div>
     <div class="flex justify-center items-center mb-6">
-      <el-link href="https://github.com/HowdyZ1220" target="_blank">
+      <el-link :href="github" target="_blank">
         <github class="text-4xl"></github
       ></el-link>
     </div>
@@ -58,7 +58,7 @@ const email = computed(() => basics.email);
 const educ = computed(() => basics.educ);
 const weChat = computed(() => basics.weChat);
 const phone = computed(() => basics.phone);
-const github = computed(() => basics.github);
+const github = computed(() => basics.website);
 </script>
 
 <style scoped></style>

@@ -1,4 +1,5 @@
 import { createStore } from "vuex";
+import resume from "../resume";
 
 export const store = createStore({
   state() {
@@ -7,13 +8,24 @@ export const store = createStore({
         position: "Web 前端工程师",
         name: "朱云祺",
         gender: "男",
+        age: "28",
+        worklife: "3",
         weChat: "HowdyZ1220",
         educ: "福州大学",
         picture:
           "http://www.lgstatic.com/i/image/M00/A1/9D/CgqKkVioBICAXXVyAABFXV8M2hw21.jpeg",
         email: "982796687@qq.com",
         phone: "15829220208",
-        website: "https://github.com/HowdyZ1220",
+        website: "https://github.com/skyvow",
+
+        location: "上海市浦东新区",
+        profiles: [
+          {
+            network: "github",
+            username: "skyvow",
+            url: "https://github.com/skyvow",
+          },
+        ],
       },
       summary: [
         "个人主攻 Web 前端和 NodeJS 开发，3年+前端开发经验，参与或独立开发过多个核心项目，项目类型涉及：电子商务、教育服务、企业管理、SPA 应用（PC/Moblie）等等",
@@ -24,6 +36,7 @@ export const store = createStore({
       project: [
         {
           organization: "上海中科院后台管理",
+          position: "Web 前端工程师",
           website: "",
           startDate: "2017.01",
           endDate: "2017.04",
@@ -37,6 +50,7 @@ export const store = createStore({
         },
         {
           organization: "上海高校后勤e站",
+          position: "Web 前端工程师",
           website: "",
           startDate: "2016.10",
           endDate: "2016.12",
@@ -93,17 +107,8 @@ export const store = createStore({
     };
   },
   mutations: {
-    updata(state: any, payload) {
-      console.log("进入commit");
-      console.log(payload);
-
-      state.basics.name = payload.name;
-      state.basics.position = payload.position;
-      state.basics.gender = payload.gender;
-      state.basics.weChat = payload.weChat;
-      state.basics.educ = payload.educ;
-      state.basics.email = payload.email;
-      state.basics.website = payload.website;
+    increment(state: any) {
+      state.basics.name = "123";
     },
   },
 });

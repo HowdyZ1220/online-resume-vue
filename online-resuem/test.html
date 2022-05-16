@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+         * {
+      padding: 0;
+      margin: 0;
+      box-sizing: border-box;
+    }
+    html, body {
+      height: 100%;
+    }
+    ul {
+        overflow-x: scroll;
+        display: flex;
+        
+        height: 200px ;
+        width: 500px;
+        border:10px solid red;
+    }
+    li {
+       height: 100%; 
+       width: 200px;
+       flex:none;
+       border:2px solid blue;
+    }
+    </style>
+</head>
+<body>
+    <div>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+</body>
+ <script>
+     var a = {}
+     var b = JSON.stringify(a)
+     console.log(b==="{}");
+     for(let item in a) {
+         console.log(1);
+     }
+     console.log(Object.keys(a).length === 0);
+     console.log(Object.getOwnPropertyNames(a).length===0);
+ </script>
+
+</html>
