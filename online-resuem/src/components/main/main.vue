@@ -1,7 +1,7 @@
 <template>
   <div class="border h-full bg-white ml-2 mr-4">
     <!-- 资料背景 -->
-    <div class="mx-8 mt-6 mb-12">
+    <div class="mx-8 mt-6 mb-12" v-if="summary && summary.length">
       <div class="text-xl flex">
         <icon-account class="mr-2 mt-0.5" />背景资料
       </div>
@@ -102,6 +102,7 @@
 </template>
 
 <script setup lang="ts">
+import { computed } from "vue";
 import { useStore } from "vuex";
 import resumeInfo from "../../resume/index";
 import IconAccount from "~icons/carbon/account";
@@ -113,7 +114,11 @@ import IconToolKit from "~icons/carbon/tool-kit";
 import IconDataCheck from "~icons/carbon/data-check";
 
 const store = useStore();
-const { education, project, skills, awards, summary } = store.state;
+const summary = computed(() => store.state.summary);
+const education = computed(() => store.state.education);
+const project = computed(() => store.state.project);
+const skills = computed(() => store.state.skills);
+const awards = computed(() => store.state.awards);
 </script>
 
 <style scoped></style>

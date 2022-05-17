@@ -1,39 +1,46 @@
-<template>
+<template class="flex">
   <div class="border bg-white h-full mx-4">
     <el-button @click="changeInfo">修改信息 </el-button>
-
-    <el-dialog
-      v-model="dialogFormVisible"
-      title="修改基本信息"
-      draggable="true"
-      width="38rem"
-    >
-      <Form ref="basicsData"></Form>
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button @click="dialogFormVisible = false">取消</el-button>
-          <el-button type="primary" @click="confirmUpdata">确认</el-button>
-        </span>
-      </template>
-    </el-dialog>
+    <el-button @click="changeSummary">修改背景资料 </el-button>
+    <Dialog
+      ref="DialogRef"
+      :dialogFormVisible="dialogFormVisible"
+      :formConfig="basicsFormConfig"
+      :count="count"
+      v-if="count === 1"
+    ></Dialog>
+    <Dialog
+      ref="DialogRef"
+      :dialogFormVisible="dialogFormVisible"
+      :formConfig="summaryFormConfig"
+      :count="count"
+      v-if="count === 2"
+    ></Dialog>
   </div>
 </template>
 
 <script setup lang="ts">
-import Form from "../Form/Form.vue";
-import { ref } from "vue";
+import { nextTick, ref } from "vue";
+import { basicsFormConfig } from "./config/basicsFormConfig";
+import { summaryFormConfig } from "./config/summaryFormConfig";
+import Dialog from "../Dialog/Dialog.vue";
 
 const dialogFormVisible = ref(false);
 const basicsData = ref();
+let count = ref(0);
+const DialogRef = ref();
 
-const changeInfo = () => {
-  dialogFormVisible.value = true;
+const changeInfo = async () => {
+  count.value = 1;
+  await nextTick();
+  DialogRef.value.dialogFormVisible = true;
+};
+const changeSummary = async () => {
+  count.value = 2;
+  await nextTick();
+  DialogRef.value.dialogFormVisible = true;
 };
 //点击确认后提交commit
-const confirmUpdata = () => {
-  dialogFormVisible.value = false;
-  basicsData.value.updataBasics();
-};
 </script>
 
 <style scoped></style>

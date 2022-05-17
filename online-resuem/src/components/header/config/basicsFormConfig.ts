@@ -1,5 +1,7 @@
 export const basicsFormConfig = {
+  title: "修改基本信息",
   labelWitdth: "8rem",
+  draggable: true,
   formItem: [
     {
       field: "name",

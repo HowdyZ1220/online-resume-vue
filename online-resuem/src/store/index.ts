@@ -93,7 +93,7 @@ export const store = createStore({
     };
   },
   mutations: {
-    updata(state: any, payload) {
+    updataBasics(state: any, payload) {
       console.log("进入commit");
       console.log(payload);
 
@@ -104,6 +104,11 @@ export const store = createStore({
       state.basics.educ = payload.educ;
       state.basics.email = payload.email;
       state.basics.website = payload.website;
+    },
+    updataSummary(state: any, payload) {
+      console.log(payload);
+      state.summary = [...payload];
+      console.log(state.summary);
     },
   },
 });
