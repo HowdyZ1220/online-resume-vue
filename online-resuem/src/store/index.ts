@@ -51,14 +51,14 @@ export const store = createStore({
       ],
       education: [
         {
-          institution: "福州大学",
+          school: "福州大学",
           area: "机械工程",
           studyType: "研究生",
           startDate: "2020-09",
           endDate: "2023-06",
         },
         {
-          institution: "西安工业大学",
+          school: "西安工业大学",
           area: "机械电子工程",
           studyType: "本科",
           startDate: "2016-09",
@@ -106,9 +106,17 @@ export const store = createStore({
       state.basics.website = payload.website;
     },
     updataSummary(state: any, payload) {
-      console.log(payload);
       state.summary = [...payload];
-      console.log(state.summary);
+    },
+    updataEducation(state: any, payload) {
+      if (payload) {
+        state.education.push({ ...payload });
+      }
+    },
+    deleEducation(state, payload) {
+      console.log(payload);
+
+      state.education.splice(payload, 1);
     },
   },
 });

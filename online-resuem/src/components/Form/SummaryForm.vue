@@ -15,7 +15,7 @@
             @clear="deleFormData"
           >
             <template #append>
-              <el-button @click="deleFormData">删除</el-button>
+              <el-button @click="deleFormData(item)">删除</el-button>
             </template>
           </el-input>
         </el-form-item>
@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineProps, Ref, ref } from "vue";
+import { Ref, ref } from "vue";
 import { useStore } from "vuex";
 
 const props = defineProps({
@@ -74,7 +74,10 @@ const addFormData = () => {
 };
 
 //添加summary数据
-const deleFormData = () => {
+const deleFormData = (item: string) => {
+  console.log(item);
+  let index = formData.value.findIndex((text: string) => text === item);
+  formData.value[index] = "";
   formData.value = formData.value.filter((item: string) => item !== "");
 };
 defineExpose({ updataSummary, formData });

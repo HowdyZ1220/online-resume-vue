@@ -17,7 +17,7 @@
       </ul>
     </div>
     <!-- 教育经历 -->
-    <div class="mx-8 mt-6 font-sans mb-12" v-if="education">
+    <div class="mx-8 mt-6 font-sans mb-12" v-if="education && education.length">
       <div class="text-xl flex">
         <icon-education class="mr-2 mt-0.5" /> 教育经历
       </div>
@@ -25,7 +25,7 @@
       <template v-for="item in education">
         <div class="mb-4 flex text-lg">
           <div class="font-bold w-36 text-center">
-            {{ item.institution }}
+            {{ item.school }}
           </div>
           <div class="font-bold px-2 w-28 text-center">
             {{ item.studyType }}

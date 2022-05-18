@@ -11,4 +11,7 @@ export default defineConfig({
       autoInstall: true,
     }),
   ],
+  // server: {
+  //   // hmr: true,
+  // },
 });

@@ -6,13 +6,13 @@
       class="pr-20"
     >
       <template v-for="item in basicsFormConfig?.formItem">
-        <el-form-item :label="item.lable" v-if="item.type === 'input'">
+        <el-form-item :label="item.lable + ':'" v-if="item.type === 'input'">
           <el-input
             :placeholder="item.placeholder"
             v-model="formData[`${item.field}`]"
           />
         </el-form-item>
-        <el-form-item :label="item.field" v-if="item.type === 'select'">
+        <el-form-item :label="item.field + ':'" v-if="item.type === 'select'">
           <el-select :placeholder="item.placeholder">
             <el-option label="男" value="男" />
             <el-option label="女" value="女" />
@@ -24,7 +24,7 @@
 </template>
 
 <script setup lang="ts">
-import { Ref, ref, watch } from "vue";
+import { Ref, ref } from "vue";
 import { useStore } from "vuex";
 
 const props = defineProps({
