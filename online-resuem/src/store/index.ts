@@ -83,16 +83,17 @@ export const store = createStore({
         },
         {
           name: "JavaScript",
-          keywords: ["NodeJS", "Python"],
+          keywords: "NodeJS，Python",
         },
         {
           name: "VUE",
-          keywords: ["NodeJS", "Python"],
+          keywords: "NodeJS,Python",
         },
       ],
     };
   },
   mutations: {
+    //更新基础信息
     updataBasics(state: any, payload) {
       console.log("进入commit");
       console.log(payload);
@@ -105,9 +106,12 @@ export const store = createStore({
       state.basics.email = payload.email;
       state.basics.website = payload.website;
     },
+    //更新背景信息
     updataSummary(state: any, payload) {
       state.summary = [...payload];
     },
+
+    //更新教育经历
     updataEducation(state: any, payload) {
       console.log(payload);
 
@@ -115,26 +119,27 @@ export const store = createStore({
         state.education.push({ ...payload });
       }
     },
-    deleEducation(state, payload) {
+    //删除信息
+    deleData(state, payload) {
       console.log(payload);
-
-      state.education.splice(payload, 1);
+      switch (payload.name) {
+        case "skills":
+          state.skills.splice(payload.index, 1);
+          break;
+        case "education":
+          state.education.splice(payload.index, 1);
+          break;
+      }
     },
+    //更新项目信息
     updataProject(state: any, payload: any) {
-      console.log(payload, "payload");
-
       state.project = payload;
 
       for (const item of state.project) {
-        console.log(typeof item.highlights, "asfad", item.highlights);
-
         if (item.highlights.length !== 0) {
-          console.log(typeof item.highlights);
-
           if (
             Object.prototype.toString.call(item.highlights) !== "[Object Array]"
           ) {
-            console.log(typeof item.highlights, "asfad", item.highlights);
             let num = item.highlights.indexOf("；,");
             if (num !== -1) {
               item.highlights = item.highlights.split("；,");
@@ -144,17 +149,11 @@ export const store = createStore({
           }
         }
       }
-      // if (state.project) {
-      //   const highlights = payload.highlights.split("；");
-      //   payload.highlights = highlights;
-      //   console.log(payload.highlights, "payload.highlights");
-      // } else {
-      //   store.state.project = payload;
-      // }
-      // if (payload && payload.highlights) {
-      //   state.project.push({ ...payload });
-      // }
+    },
+    //更新技能信息
+    updataSkills(state, payload) {
+      console.log(payload, "payload");
+      state.skills = payload;
     },
   },
 });
-// const basic = { ...resume.basics };

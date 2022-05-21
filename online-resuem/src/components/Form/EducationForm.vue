@@ -8,7 +8,7 @@
       <template v-for="(items, index) in formData">
         <div class="ml-4 flex">
           <div class="text-base text-cyan-600">教育经历 {{ index }}</div>
-          <el-button class="mb-4 ml-72" @click="deleEducData(items, index)">
+          <el-button class="mb-4 ml-72" @click="deleData(items, index)">
             删除教育经历 {{ index }}</el-button
           >
         </div>
@@ -71,9 +71,10 @@ const cloneInfo = function (obj1: any) {
 //存储education的值
 const formData: Ref<any> = ref(cloneInfo(store.state.education));
 //点击删除教育经历
-const deleEducData = (items, index) => {
+const deleData = (items, index) => {
   console.log(items, index);
-  store.commit("deleEducation", index);
+  store.commit("deleData", { index, name: "education" });
+  formData.value = store.state.education;
 };
 
 //发送更新vuex数据请求
@@ -89,7 +90,7 @@ const updataEducation = function () {
     store.commit("updataEducation");
     console.log("走的这里");
   }
-
+  formData.value = store.state.education;
   inputObj.value = {
     school: "",
     area: "",

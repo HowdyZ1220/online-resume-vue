@@ -62,7 +62,6 @@ const props = defineProps({
 
 const projectFormConfig = props.projectFormConfig;
 const store = useStore();
-//动态绑定输入的值
 const inputObj: any = ref({
   organization: "",
   website: "",
@@ -102,14 +101,13 @@ const deleEducData = (items: object, index: number) => {
 
 //发送更新vuex数据请求
 const updataProject = function () {
-  console.log("发送更新请求");
-
   if (inputObj.value.organization !== "" && inputObj.value.endDate !== "") {
     store.commit("updataProject", [inputObj.value, ...formData.value]);
   } else {
     store.commit("updataProject", formData.value);
   }
 
+  formData.value = store.state.project;
   inputObj.value = {
     organization: "",
     website: "",
