@@ -38,7 +38,7 @@
       </template>
     </div>
     <!-- 项目经历 -->
-    <div class="mx-8 mt-6 font-sans mb-12" v-if="project">
+    <div class="mx-8 mt-6 font-sans mb-12" v-if="project && project.length">
       <div class="text-xl flex">
         <icon-data-check class="mr-2 mt-0.5" />项目经历
       </div>
@@ -70,7 +70,7 @@
       </template>
     </div>
     <!-- 技能清单 -->
-    <div class="mx-8 mt-6 font-sans mb-12" v-if="skills">
+    <div class="mx-8 mt-6 font-sans mb-12" v-if="skills && skills.length">
       <div class="text-xl flex">
         <icon-tool-kit class="mr-2 mt-0.5" /> 技能清单
       </div>
@@ -82,7 +82,7 @@
       </el-table>
     </div>
     <!-- 荣誉证书 -->
-    <div class="mx-8 mt-6 font-sans mb-12" v-if="awards">
+    <div class="mx-8 mt-6 font-sans mb-12" v-if="awards && awards.length">
       <div class="text-xl flex">
         <icon-certificate class="mr-2 mt-0.5" /> 荣誉证书
       </div>

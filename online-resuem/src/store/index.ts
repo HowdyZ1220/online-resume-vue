@@ -95,9 +95,6 @@ export const store = createStore({
   mutations: {
     //更新基础信息
     updataBasics(state: any, payload) {
-      console.log("进入commit");
-      console.log(payload);
-
       state.basics.name = payload.name;
       state.basics.position = payload.position;
       state.basics.gender = payload.gender;
@@ -113,15 +110,12 @@ export const store = createStore({
 
     //更新教育经历
     updataEducation(state: any, payload) {
-      console.log(payload);
-
       if (payload) {
         state.education.push({ ...payload });
       }
     },
     //删除信息
     deleData(state, payload) {
-      console.log(payload);
       switch (payload.name) {
         case "skills":
           state.skills.splice(payload.index, 1);
@@ -129,31 +123,40 @@ export const store = createStore({
         case "education":
           state.education.splice(payload.index, 1);
           break;
+        case "awards":
+          state.awards.splice(payload.index, 1);
+          break;
+        case "project":
+          state.project.splice(payload.index, 1);
+          break;
       }
     },
     //更新项目信息
     updataProject(state: any, payload: any) {
       state.project = payload;
-
       for (const item of state.project) {
         if (item.highlights.length !== 0) {
-          if (
-            Object.prototype.toString.call(item.highlights) !== "[Object Array]"
-          ) {
+          if (typeof item.highlights !== "object") {
             let num = item.highlights.indexOf("；,");
+
             if (num !== -1) {
               item.highlights = item.highlights.split("；,");
             } else {
-              item.highlights = item.highlights.split("；");
+              item.highlights =
+                item.highlights.split("；") || item.highlights.split("；,");
             }
+          } else {
+            item.highlights = item.highlights;
           }
         }
       }
     },
     //更新技能信息
     updataSkills(state, payload) {
-      console.log(payload, "payload");
       state.skills = payload;
+    },
+    updataAwards(state, payload) {
+      state.awards = payload;
     },
   },
 });

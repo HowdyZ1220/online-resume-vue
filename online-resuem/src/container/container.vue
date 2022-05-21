@@ -1,9 +1,10 @@
 <template>
   <div class="common-layout">
-    <el-container>
-      <el-header class="header mb-2 h-96">
-        <Header></Header>
-      </el-header>
+    <el-container class="relative">
+      <Header
+        class="fixed right-6 h-12 w-12 bottom-16 rounded-3xl shadow-2xl text-center z-10"
+      ></Header>
+
       <el-container>
         <el-aside width="500px" class="sticky top-0 h-screen">
           <Aside></Aside>

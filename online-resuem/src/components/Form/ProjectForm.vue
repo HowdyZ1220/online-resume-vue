@@ -7,10 +7,10 @@
     >
       <span class="text-gray-400">项目亮点用中文；分隔</span>
       <template v-for="(items, index) in formData">
-        <div class="ml-4 flex">
-          <div class="text-base text-cyan-600">项目经历 {{ index }}</div>
-          <el-button class="mb-4 ml-72" @click="deleEducData(items, index)">
-            删除项目经历 {{ index }}</el-button
+        <div class="ml-4 flex items-center">
+          <div class="text-base text-cyan-600">项目经历</div>
+          <el-button class="mb-4 ml-78" @click="deleData(items, index)">
+            删除</el-button
           >
         </div>
 
@@ -94,20 +94,23 @@ const deepClone = <T>(origin: T, target?: Record<string, any> | T): T => {
 };
 const formData: Ref<any> = ref(deepClone(store.state.project, []));
 //点击删除教育经历
-const deleEducData = (items: object, index: number) => {
+const deleData = (items: object, index: number) => {
   console.log(items, index);
-  store.commit("deleEducation", index);
+  store.commit("deleData", { index, name: "project", items });
+  formData.value = store.state.project;
 };
 
 //发送更新vuex数据请求
 const updataProject = function () {
   if (inputObj.value.organization !== "" && inputObj.value.endDate !== "") {
+    console.log("有内容");
+
     store.commit("updataProject", [inputObj.value, ...formData.value]);
   } else {
+    console.log("无内容");
+
     store.commit("updataProject", formData.value);
   }
-
-  formData.value = store.state.project;
   inputObj.value = {
     organization: "",
     website: "",
@@ -116,6 +119,7 @@ const updataProject = function () {
     summary: "",
     highlights: [],
   };
+  formData.value = store.state.project;
 };
 
 defineExpose({ updataProject, formData });

@@ -31,6 +31,11 @@
         v-if="props.count === 5"
         :skillsFormConfig="props.formConfig"
       ></skills-form>
+      <awards-form
+        ref="awardsDataRef"
+        v-if="props.count === 6"
+        :awardsFormConfig="props.formConfig"
+      ></awards-form>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogFormVisible = false">取消</el-button>
@@ -48,6 +53,7 @@ import SummaryForm from "../Form/SummaryForm.vue";
 import EducationForm from "../Form/EducationForm.vue";
 import ProjectForm from "../Form/ProjectForm.vue";
 import SkillsForm from "../Form/SkillsForm.vue";
+import AwardsForm from "../Form/AwardsForm.vue";
 const props = defineProps({
   dialogFormVisible: Boolean,
   formConfig: Object,
@@ -61,26 +67,29 @@ const summaryDataRef = ref();
 const educationDataRef = ref();
 const projectDataRef = ref();
 const skillsDataRef = ref();
+const awardsDataRef = ref();
 
 const confirmUpdata = () => {
   dialogFormVisible.value = false;
-  if (count === 1) {
-    basicsDataRef.value.updataBasics();
-  }
-  if (count === 2) {
-    summaryDataRef.value.updataSummary();
-  }
-  if (count === 3) {
-    console.log("背景资料已保存");
-    educationDataRef.value.updataEducation();
-  }
-  if (count === 4) {
-    console.log("背景资料已保存");
-    projectDataRef.value.updataProject();
-  }
-  if (count === 5) {
-    console.log("背景资料已保存");
-    skillsDataRef.value.updataSkills();
+  switch (count) {
+    case 1:
+      basicsDataRef.value.updataBasics();
+      break;
+    case 2:
+      summaryDataRef.value.updataSummary();
+      break;
+    case 3:
+      educationDataRef.value.updataEducation();
+      break;
+    case 4:
+      projectDataRef.value.updataProject();
+      break;
+    case 5:
+      skillsDataRef.value.updataSkills();
+      break;
+    case 6:
+      awardsDataRef.value.updataAwards();
+      break;
   }
 };
 defineExpose({
