@@ -3,6 +3,8 @@
     <el-button @click="changeInfo">修改信息 </el-button>
     <el-button @click="changeSummary">修改背景资料 </el-button>
     <el-button @click="changeEducation">修改教育经历 </el-button>
+    <el-button @click="changeProject">修改项目经历 </el-button>
+
     <Dialog
       ref="DialogRef"
       :dialogFormVisible="dialogFormVisible"
@@ -24,6 +26,13 @@
       :count="count"
       v-if="count === 3"
     ></Dialog>
+    <Dialog
+      ref="DialogRef"
+      :dialogFormVisible="dialogFormVisible"
+      :formConfig="projectFormConfig"
+      :count="count"
+      v-if="count === 4"
+    ></Dialog>
   </div>
 </template>
 
@@ -32,6 +41,7 @@ import { nextTick, ref } from "vue";
 import { basicsFormConfig } from "./config/basicsFormConfig";
 import { summaryFormConfig } from "./config/summaryFormConfig";
 import { educationFormConfig } from "./config/educationFormConfig";
+import { projectFormConfig } from "./config/projectFormConfig";
 import Dialog from "../Dialog/Dialog.vue";
 
 const dialogFormVisible = ref(false);
@@ -56,6 +66,13 @@ const changeSummary = async () => {
 //修改教育经历
 const changeEducation = async () => {
   count.value = 3;
+  await nextTick();
+  DialogRef.value.dialogFormVisible = true;
+};
+
+//修改项目经历
+const changeProject = async () => {
+  count.value = 4;
   await nextTick();
   DialogRef.value.dialogFormVisible = true;
 };

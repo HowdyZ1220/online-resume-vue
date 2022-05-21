@@ -21,6 +21,11 @@
         v-if="props.count === 3"
         :educationFormConfig="props.formConfig"
       ></education-form>
+      <project-form
+        ref="projectDataRef"
+        v-if="props.count === 4"
+        :projectFormConfig="props.formConfig"
+      ></project-form>
       <template #footer>
         <span class="dialog-footer">
           <el-button @click="dialogFormVisible = false">取消</el-button>
@@ -36,6 +41,7 @@ import { ref } from "vue";
 import BasicsForm from "../Form/BasicsForm.vue";
 import SummaryForm from "../Form/SummaryForm.vue";
 import EducationForm from "../Form/EducationForm.vue";
+import ProjectForm from "../Form/ProjectForm.vue";
 
 const props = defineProps({
   dialogFormVisible: Boolean,
@@ -48,6 +54,7 @@ const formConfig = props.formConfig;
 const basicsDataRef = ref();
 const summaryDataRef = ref();
 const educationDataRef = ref();
+const projectDataRef = ref();
 
 const confirmUpdata = () => {
   dialogFormVisible.value = false;
@@ -60,6 +67,10 @@ const confirmUpdata = () => {
   if (count === 3) {
     console.log("背景资料已保存");
     educationDataRef.value.updataEducation();
+  }
+  if (count === 4) {
+    console.log("背景资料已保存");
+    projectDataRef.value.updataProject();
   }
 };
 defineExpose({

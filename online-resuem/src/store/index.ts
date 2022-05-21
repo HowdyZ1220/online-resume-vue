@@ -109,6 +109,8 @@ export const store = createStore({
       state.summary = [...payload];
     },
     updataEducation(state: any, payload) {
+      console.log(payload);
+
       if (payload) {
         state.education.push({ ...payload });
       }
@@ -117,6 +119,41 @@ export const store = createStore({
       console.log(payload);
 
       state.education.splice(payload, 1);
+    },
+    updataProject(state: any, payload: any) {
+      console.log(payload, "payload");
+
+      state.project = payload;
+
+      for (const item of state.project) {
+        console.log(typeof item.highlights, "asfad", item.highlights);
+
+        if (item.highlights.length !== 0) {
+          console.log(typeof item.highlights);
+
+          if (
+            Object.prototype.toString.call(item.highlights) !== "[Object Array]"
+          ) {
+            console.log(typeof item.highlights, "asfad", item.highlights);
+            let num = item.highlights.indexOf("；,");
+            if (num !== -1) {
+              item.highlights = item.highlights.split("；,");
+            } else {
+              item.highlights = item.highlights.split("；");
+            }
+          }
+        }
+      }
+      // if (state.project) {
+      //   const highlights = payload.highlights.split("；");
+      //   payload.highlights = highlights;
+      //   console.log(payload.highlights, "payload.highlights");
+      // } else {
+      //   store.state.project = payload;
+      // }
+      // if (payload && payload.highlights) {
+      //   state.project.push({ ...payload });
+      // }
     },
   },
 });

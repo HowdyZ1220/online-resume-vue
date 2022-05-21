@@ -5,15 +5,15 @@
       size="large"
       class="pr-10"
     >
-      <template v-for="(items, index) in store.state.education">
+      <template v-for="(items, index) in formData">
         <div class="ml-4 flex">
-          <div class="text-base text-cyan-600">教育经历 {{ index + 1 }}</div>
+          <div class="text-base text-cyan-600">教育经历 {{ index }}</div>
           <el-button class="mb-4 ml-72" @click="deleEducData(items, index)">
-            删除教育经历 {{ index + 1 }}</el-button
+            删除教育经历 {{ index }}</el-button
           >
         </div>
 
-        <template v-for="num in educationFormConfig.education">
+        <template v-for="num in educationFormConfig.formItem">
           <el-form-item :label="num.lable + ':'" v-if="num.type === 'input'">
             <el-input
               :placeholder="num.placeholder"
@@ -22,8 +22,8 @@
           </el-form-item>
         </template>
       </template>
-      <div># 添加数据</div>
-      <template v-for="item in educationFormConfig.education">
+      <div class="text-base text-cyan-600 ml-4">添加数据</div>
+      <template v-for="item in educationFormConfig.formItem">
         <el-form-item :label="item.lable + ':'" v-if="item.type === 'input'">
           <el-input
             :placeholder="item.placeholder"
@@ -31,16 +31,6 @@
           />
         </el-form-item>
       </template>
-      <!-- <el-input
-        class="pl-8"
-        v-model="addText"
-        autosize
-        type=""
-        placeholder="Please input"
-        ><template #append>
-          <el-button @click="addFormData">添加</el-button>
-        </template>
-      </el-input> -->
     </el-form>
   </div>
 </template>
@@ -64,8 +54,7 @@ const inputObj = ref({
   startDate: "",
   endDate: "",
 });
-//存储education的值
-const formData: Ref<any> = ref();
+
 //对象深拷贝
 const cloneInfo = function (obj1: any) {
   const obj2 = {};
@@ -79,7 +68,8 @@ const cloneInfo = function (obj1: any) {
 
   return obj2;
 };
-formData.value = cloneInfo(store.state.education);
+//存储education的值
+const formData: Ref<any> = ref(cloneInfo(store.state.education));
 //点击删除教育经历
 const deleEducData = (items, index) => {
   console.log(items, index);
@@ -88,12 +78,16 @@ const deleEducData = (items, index) => {
 
 //发送更新vuex数据请求
 const updataEducation = function () {
+  console.log(store.state.education[0].school, "school");
+
   console.log("发送更新请求");
   console.log(formData.value);
+
   if (inputObj.value.school !== "" && inputObj.value.endDate !== "") {
     store.commit("updataEducation", inputObj.value);
   } else {
     store.commit("updataEducation");
+    console.log("走的这里");
   }
 
   inputObj.value = {

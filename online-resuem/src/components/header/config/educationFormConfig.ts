@@ -2,7 +2,7 @@ export const educationFormConfig = {
   title: "修改教育经历",
   labelWitdth: "8rem",
   draggable: true,
-  education: [
+  formItem: [
     {
       field: "school",
       type: "input",
